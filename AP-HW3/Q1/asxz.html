@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="jquery-1.9.1.min.js">
+
+    <div class="introduction" id="introduction">
+        <h1 style="margin-left: 20% ;margin-right:%;color: red;font-size: 100% ">Wellcome to Game </h1>
+
+        <div class="siz">
+        <p class="length" style="color: red">Length:</p>
+        <input id="length1" style="color:;background-color:white;border:2px solid blue;width: 50%" class="length"  type="text" value=""></i>
+        </div>
+
+        <div class="siz">
+        <p class="height" style="color: red">Height:</p>
+        
+        <input id="height1" style="color:;background-color:white;border:2px solid blue;width: 50% "  class="height" type="text" value=""></i>
+       
+        </div>
+        <hr style="color: blue">
+        <button onclick="getSize()" style="margin-left: 35%;width:30%;height: 7vh;background-color:white;background-color:white;border:2px solid blue;border-radius: 8px  ">Go</button> 
+        
+    </div class="introduction">
+
+    <div class="main" id="main">
+        <div class="game" id="game">
+
+        </div>
+        <div id="socer" >
+            <div class="blue_player" onclick="show()">
+
+                red = red_player.value
+                32
+            </div>
+            <div class="red_player">
+                red = red_player.value
+            </div>
+        </div>
+    </div>
+
+
+
+
+</head>
+<body>
+
+
+
+<script >
+    document.getElementById("main").style.display = "none";
+    
+    function getSize() {
+    let length = document.getElementById("length1").value; 
+    let height = document.getElementById("height1").value; 
+
+    var counter = 0;
+    var blue_player = 0;
+    var red_player = 0;
+
+    function getID(e){
+        e = e ||window.event;
+        e = e.target|| e.srcElement
+        return e.id;
+    }
+    function show(e){
+        var sdl = getID(e)
+        var score = parseInt(document.getElementById(sd1).innerHTML);
+        score++;
+        document.getElementById(sd1).innerHTML = score;
+
+    }
+
+    function makeline(e){
+        counter++;
+        var r = getID(e.id);
+        //var r2 = getID(e+.id);
+        console.log(r);
+
+        //var test = var id = $("div").attr('id').replace(/button/, '');
+        var res0 = r.charAt(0);
+        var res1 = r.charAt(1);
+        var res2 = r.charAt(2);
+        var res = res1+res2;
+        var resP = parseInt(res);
+        console.log(res);
+        console.log(resP+1);
+        var test = parseInt(r);
+        var test1 = parseInt(r)+parseInt(length);
+        var test2 = parseInt(r)-parseInt(length);
+        
+        var test1_res = parseInt(res)+parseInt(length);
+        var test2_res = parseInt(res)-parseInt(length);
+
+        
+        if( counter % 2 == 0){
+            
+            document.getElementById( r ).style.background = "blue";
+
+        if(res0 == "f"){
+            console.log(res0);
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+resP ).style.background != "black" )
+                if( document.getElementById( ""+resP ).style.background != "black" )
+                if( document.getElementById( ""+test1_res ).style.background != "black" ){
+                    document.getElementById( "box"+resP ).style.background = "blue"
+                    //function(){show()};
+                    blue_player++;
+
+                    counter--;
+                }
+             }
+
+
+        }    
+
+        if( res0 !='v'){   
+
+            if(test > length*height){
+                
+                 var res0_end = r.charAt(0);
+                 var res1_end = r.charAt(1);
+                 var res_end = res0_end+res1_end;
+                 var resP_end = parseInt(res_end);
+
+                 if( resP_end == (length*height+1) )
+                {
+                   if( document.getElementById( r ).style.background != "black"  )
+                   if( document.getElementById( ""+test2 ).style.background != "black" )
+                   if( document.getElementById( "v"+test2 ).style.background != "black" )
+                   if( document.getElementById( "f"+test2 ).style.background != "black" ){
+                   document.getElementById( "box"+test2 ).style.background = "blue"
+                   blue_player++;
+                   counter--;
+                   }
+                } 
+                r = test2.toString();
+                var test = parseInt(r);
+        var test1 = parseInt(r)+parseInt(length);
+        var test2 = parseInt(r)-parseInt(length);           
+
+
+            }
+
+            if( document.getElementById( r ).style.background != "black"  )
+                if( document.getElementById( ""+test1 ).style.background != "black" )
+                if( document.getElementById( "v"+r ).style.background != "black" )
+                if( document.getElementById( "v"+(r-1) ).style.background != "black" ){
+                    document.getElementById( "box"+r ).style.background = "blue"
+                    blue_player++;
+                   counter--;
+                   }
+
+
+            if( document.getElementById( r ).style.background != "black"  )
+                if( document.getElementById( ""+test2 ).style.background != "black" )
+                if( document.getElementById( "v"+test2 ).style.background != "black" )
+                if( document.getElementById( "v"+(test2-1) ).style.background != "black" ){
+                    document.getElementById( "box"+test2 ).style.background = "blue"
+                    blue_player++;
+                   counter--;
+                }
+            
+        }
+        if( res0 =="v"){
+
+            if(resP % length == 1)
+            {
+                if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+resP ).style.background != "black" )
+                if( document.getElementById( ""+resP ).style.background != "black" )
+                if( document.getElementById( ""+test1_res ).style.background != "black" ){
+                    document.getElementById( "box"+resP ).style.background = "blue"
+                    blue_player++;
+                   counter--;
+                   }
+             }
+
+
+            }   
+
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+(resP-1) ).style.background != "black" )
+                if( document.getElementById( ""+resP ).style.background != "black" )
+                if( document.getElementById( ""+test1_res ).style.background != "black" ){
+                    document.getElementById( "box"+resP ).style.background = "blue"
+                    blue_player++;
+                   counter--;
+                   }
+             }
+
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+(resP+1) ).style.background != "black" )
+                if( document.getElementById( ""+(resP+1) ).style.background != "black" )
+                if( document.getElementById( ""+(test1_res+1) ).style.background != "black" ){
+                    document.getElementById( "box"+(resP+1) ).style.background = "blue"
+                    blue_player++;
+                   counter--;
+                   }        
+             }
+        }                 
+            
+
+        }
+        else{
+            document.getElementById( r ).style.background = "red";
+        if(res0 == "f"){
+            console.log(res0);
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+resP ).style.background != "black" )
+                if( document.getElementById( ""+resP ).style.background != "black" )
+                if( document.getElementById( ""+test1_res ).style.background != "black" ){
+                    document.getElementById( "box"+resP ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }
+             }            
+
+        }    
+
+
+            
+        if( res0 !='v'){
+        if(test > length*height){
+                var res0_end = r.charAt(0);
+                 var res1_end = r.charAt(1);
+                 var res_end = res0_end+res1_end;
+                 var resP_end = parseInt(res_end);
+
+                 if( resP_end == (length*height+1))
+                {
+                   if( document.getElementById( r ).style.background != "black"  )
+                   if( document.getElementById( ""+test2 ).style.background != "black" )
+                   if( document.getElementById( "v"+test2 ).style.background != "black" )
+                   if( document.getElementById( "f"+test2 ).style.background != "black" ){
+                   document.getElementById( "box"+test2 ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }
+                   
+                } 
+                r = test2.toString();
+                var test = parseInt(r);
+        var test1 = parseInt(r)+parseInt(length);
+        var test2 = parseInt(r)-parseInt(length);
+
+            }
+   
+            if( document.getElementById( r ).style.background != "black"  )
+                if( document.getElementById( ""+test1 ).style.background != "black" )
+                if( document.getElementById( "v"+r ).style.background != "black" )
+                if( document.getElementById( "v"+(r-1) ).style.background != "black" ){
+                    document.getElementById( "box"+r ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }
+
+
+            if( document.getElementById( r ).style.background != "black"  )
+                if( document.getElementById( ""+test2 ).style.background != "black" )
+                if( document.getElementById( "v"+test2 ).style.background != "black" )
+                if( document.getElementById( "v"+(test2-1) ).style.background != "black" ){
+                    document.getElementById( "box"+test2 ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }
+
+        }
+        if( res0 =='v'){   
+
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+(resP-1) ).style.background != "black" )
+                if( document.getElementById( ""+resP ).style.background != "black" )
+                if( document.getElementById( ""+test1_res ).style.background != "black" ){
+                    document.getElementById( "box"+resP ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }
+                            
+             }
+
+            if( document.getElementById( r ).style.background != "black"  ){
+                if( document.getElementById( "v"+(resP+1) ).style.background != "black" )
+                if( document.getElementById( ""+(resP+1) ).style.background != "black" )
+                if( document.getElementById( ""+(test1_res+1) ).style.background != "black" ){
+                    document.getElementById( "box"+(resP+1) ).style.background = "red"
+                    red_player++;
+                   counter--;
+                   }            
+             }  
+        }               
+        
+
+        }
+
+    }
+     
+
+        document.getElementById("introduction").style.display = "none";
+    document.getElementById("main").style.display = "";
+   
+    //document.getElementById("game").style.width = "500px";
+    
+   
+    for (var i = 1; i <= height; i++) {
+
+        var radif = document.createElement("div");
+        radif.id = "radif"+i;
+
+        document.getElementById("game").appendChild(radif);
+        
+
+        var truckload = document.createElement("div");
+        truckload.id = "truckload"+i;
+        document.getElementById("game").appendChild(truckload);
+        truckload.style.display="inline-flex";  
+        var line0 = document.createElement("div");
+            //(  (i-1) *length+j )
+            line0.id = "f"+(  (i-1) *length+1 );
+            //line0.id = "v"+((i-1)*length+(i-1));
+            //line.id = ((i-1)*length+j);
+
+            line0.style.width = ".4vw";
+            line0.style.height = "10vh";
+            line0.style.background = "black";
+            line0.style.marginTop = "1vh";
+
+            line0.onclick = function(){makeline(line0.id)};
+        document.getElementById("truckload"+i).appendChild(line0);
+
+        for (var j = 1; j <= length; j++) {
+            var one1 = document.createElement("div");
+            
+
+            one1.style.display="inline-flex";  
+            var node = document.createElement("div");
+            node.id = "node"+i+"-"+j;
+
+            node.style.width = ".5vw";
+            node.style.height = "1vh";
+            node.style.background = "black";
+            node.style.borderRadius = "50px";
+
+            var line = document.createElement("div");
+            
+            line.id = ((i-1)*length+j);
+            //line.id = "line"+i+j;
+              
+            line.style.width = "5vw";
+
+            line.onclick = function(){makeline(line.id)};
+
+            line.style.height = "1vh";
+            line.style.background = "black";
+            line.style.marginLeft = ".5vw";
+            line.style.marginRight = ".5vw";
+            
+            one1.appendChild(node);
+            one1.appendChild(line);
+            one1.id = 'one'+i+"-"+j;
+            document.getElementById("radif"+i).appendChild(one1);
+            if(j == length){
+            var one1e = document.createElement("div");
+            one1e.style.display="inline-flex";  
+
+            var nodee = document.createElement("div");
+            nodee.id = "nodee"+i+"-"+j;
+
+            nodee.style.width = ".5vw";
+            nodee.style.height = "1vh";
+            nodee.style.background = "black";
+            nodee.style.borderRadius = "50px";
+
+            one1e.appendChild(nodee);
+
+            document.getElementById("radif"+i).appendChild(one1e);
+            
+            } 
+
+            var one2 = document.createElement("div");
+            one2.id = "onee"+i+"-"+j;
+            one2.style.display="inline-flex";  
+
+            var box = document.createElement("div");
+            box.id = "box"+((i-1)*length+j);
+            // console.log(box.id);
+            box.style.width = "5vw";
+            box.style.height = "10vh";
+            box.style.background = "grey";
+            box.style.marginTop = "1vh";
+            box.style.marginLeft = ".5vw";
+            box.style.marginRight = ".5vw";
+   
+            var line2 = document.createElement("div");
+
+             //var za = (length+1);
+            line2.id = "v"+(  (i-1) *length+j );
+            //line.id = ((i-1)*length+j);
+
+            line2.style.width = "7px";
+            line2.style.height = "10vh";
+            line2.style.background = "black";
+            line2.style.marginTop = "1vh";
+
+            line2.onclick = function(){makeline(line2.id)};
+
+            one2.appendChild(box);
+            one2.appendChild(line2);
+            document.getElementById("truckload"+i).appendChild(one2);
+            
+        }
+    }
+        for (var j = 1; j <= length; j++) {
+        
+            var radif_end = document.createElement("div");
+            radif_end.id = "radif"+i+1;
+            document.getElementById("game").appendChild(radif_end);
+
+            var one1_end = document.createElement("div");
+            one1_end.style.display="inline-flex";  
+
+            var node_end = document.createElement("div");
+            node_end.id = "node"+i+"-"+j+1;
+            node_end.style.width = ".5vw";
+            node_end.style.height = "1vh";
+            node_end.style.background = "black";
+            node_end.style.borderRadius = "50px";
+
+            var line_end = document.createElement("div");
+            line_end.id = (length*height+j);
+            line_end.style.width = "5vw";
+            line_end.style.height = "1vh";
+            line_end.style.background = "black";
+            line_end.style.marginLeft = ".5vw";
+            line_end.style.marginRight = ".5vw";
+            line_end.onclick = function(){makeline(line.id)};
+
+            one1_end.appendChild(node_end);
+            one1_end.appendChild(line_end);
+            one1_end.id = 'one'+i+"-"+j+1;
+            document.getElementById("radif"+i+1).appendChild(one1_end);
+
+            if(j == length){
+            var one1e1 = document.createElement("div");
+            one1e1.style.display="inline-flex";  
+
+            var nodee1 = document.createElement("div");
+            nodee1.id = "nodee-"+i+"-"+j;
+
+            nodee1.style.width = ".5vw";
+            nodee1.style.height = "1vh";
+            nodee1.style.background = "black";
+            nodee1.style.borderRadius = "50px";
+
+            one1e1.appendChild(nodee1);
+
+            document.getElementById("radif"+i+1).appendChild(one1e1);
+            
+            } 
+            }
+        
+
+}
+</script>
+
+
+
+
+
+</body>
+
+<style >
+    .one{
+        display: inline-block;
+    }
+    .two{
+        display: inline-block;
+    }
+    .three{
+        display: inline-block;
+    }
+    .three3{
+        height: 0px;
+    }
+    .heart{
+        height: 50px;
+        width: 50px;
+        background-color:green; 
+    }
+    .line1{
+        width: 50px !important;
+        height: 5px !important;
+        background-color:red;
+    }
+    .line2{
+        width: 5px !important;
+        height: 50px !important;
+        background-color:red;
+    }
+    .line3{
+        width: 5px !important;
+        height: 50px !important;
+        background-color: red;
+    }
+    .line4{
+        width: 50px !important;
+        height: 5px !important;
+        background-color:red;
+    }
+    
+    .home{
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+    }
+    .node{
+        width:5px ;
+        height: 5px ;
+        background-color:black;
+
+    }
+    
+    .game{
+        margin-top: 7%;
+        margin-left: 20%;
+        margin-right: 20%;
+        background-color:white;
+        border:2px solid blue;
+        border-radius: 8px; 
+    }
+
+    .size{
+        display: inline-block;
+    }
+    .length{
+        display: inline-block;
+        
+
+    }
+    .height{
+        display: inline-block;
+    }
+    .introduction{
+        
+        margin-top: 7%;
+        margin-bottom: 25%;
+        margin-left:30%;
+        margin-right: 36%;
+        background-color:white;
+        border:2px solid blue;
+        border-radius: 8px; 
+    }
+</style>
+</html>
